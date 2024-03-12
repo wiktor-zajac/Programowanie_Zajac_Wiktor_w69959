@@ -1,83 +1,110 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <title>Moja strona</title>
 </head>
 <body>
-    <h1>Hello!</h1>
-    <b>Jestem studentem pierwszwgo roku, uczęszczałem do technikum informatycznego.</b>
-    <i>Interesuję się grami wideo.</i>
+    <header>
+        <h1>Hello!</h1>
+        <b>Jestem studentem pierwszwgo roku, uczęszczałem do technikum informatycznego.</b>
+        <i>Interesuję się grami wideo.</i>
+    </header>
 
-    <ul>
-        <li>Persona 3 Portable</li>
-        <li>Persona 4 Golden</li>
-        <li>Persona 5 Royal</li>
-    </ul>
+    <nav>
+        <a href="pieczywa.html">Pieczywa</a>
+        <a href="piosenki.html">Piosenki</a>
+    </nav>
 
-    <ol>
-        <li><a href="https://steamdb.info/app/10/">Counter Strike</a></li>
-        <li><a href="https://steamdb.info/app/240/">Counter Strike: Source</a></li>
-        <li>Counter Strike: Global Offensive</li>
-        <li><a href="https://steamdb.info/app/730/">Counter Strike 2</a></li>
-    </ol>
+    <section style="width: 60%; float: left;">
+        <article>
+            <p>Przykładowe gry</p>
+            <ul>
+                <li>Persona 3 Portable</li>
+                <li>Persona 4 Golden</li>
+                <li>Persona 5 Royal</li>
+            </ul>
+        </article>
 
-    <table border="1">
-        <tr>
-            <td>2023-obecnie</td>
-            <td>WSIZ</td>
-        </tr>
-        <tr>
-            <td>2018-2022</td>
-            <td>Technikum nr 6</td>
-        </tr>
-        <tr>
-            <td>2015-2018</td>
-            <td>Gimnazjum w Iwierzycach</td>
-        </tr>
-        <tr>
-            <td>2008-2015</td>
-            <td>Szkoła Podstawowa w Wiercanach</td>
-        </tr>
-    </table>
+        <article>
+            <p>Przykładowe gry z linkami</p>
+            <ol>
+                <li><a href="https://steamdb.info/app/10/">Counter Strike</a></li>
+                <li><a href="https://steamdb.info/app/240/">Counter Strike: Source</a></li>
+                <li>Counter Strike: Global Offensive</li>
+                <li><a href="https://steamdb.info/app/730/">Counter Strike 2</a></li>
+            </ol>
+        </article>
 
-    <table border="1" width="100" height="100">
-        <tr>
-            <td>&nbsp;</td>
-            <td rowspan="2">&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td colspan="2" rowspan="2">&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td colspan="2">&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
-    </table>
+        <article>
+            <p>Moja edukacja</p>
+            <table border="1">
+                <tr>
+                    <td>2023-obecnie</td>
+                    <td>WSIZ</td>
+                </tr>
+                <tr>
+                    <td>2018-2022</td>
+                    <td>Technikum nr 6</td>
+                </tr>
+                <tr>
+                    <td>2015-2018</td>
+                    <td>Gimnazjum w Iwierzycach</td>
+                </tr>
+                <tr>
+                    <td>2008-2015</td>
+                    <td>Szkoła Podstawowa w Wiercanach</td>
+                </tr>
+            </table>
+        </article>
 
-    <img src="chleb.jpg" alt="Chleb" width="250">
+        <article>
+            <p>Pusta tabelka</p>
+            <table border="1" width="100" height="100">
+                <tr>
+                    <td>&nbsp;</td>
+                    <td rowspan="2">&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td colspan="2" rowspan="2">&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td colspan="2">&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+            </table>
+        </article>
+    </section>
 
-    <div>
-        <header>Header</header>
-        <nav>Nav</nav>
-        <main>
-            <section>
-                Section
-                <article>Article 1</article>
-                <article>Article 2</article>
-            </section>
-            <aside>Aside</aside>
-        </main>
-        <footer>Footer</footer>
-    </div>
+    <aside style="width: 40%; float: left;">
+        <form action="" method="get">
+            <label for="in-number">Podaj liczbę</label>
+            <input type="number" name="in-number" id="in-number" min="0" max="10" value="5"><br>
+
+            <label for="in-text">Imię</label>
+            <input type="text" name="in-text" id="in-text" minlength="3" maxlength="128" required><br>
+
+            <label for="in-color">Ulubiony kolor</label>
+            <input type="color" name="in-color" id="in-color"><br>
+
+            <label for="in-date">Wybrana data</label>
+            <input type="date" name="in-date" id="in-date"><br>
+
+            <input type="submit" value="Wyślij">
+        </form>
+    </aside>
+
+    <footer style="clear: both;">
+        <img src="chleb.jpg" alt="Chleb" width="250">
+    </footer>
 </body>
 </html>
