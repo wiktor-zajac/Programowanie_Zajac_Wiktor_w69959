@@ -4,9 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Moja strona</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
+    <nav>
+        <a href="index.html" class="active">Strona główna</a>
+        <a href="pieczywa.html">Pieczywa</a>
+        <a href="piosenki.html">Piosenki</a>
+    </nav>
     <header>
         <h1>Hello!</h1>
         <h4>bottom text</h4>
@@ -14,13 +20,8 @@
         <i>Interesuję się grami wideo.</i>
     </header>
 
-    <nav>
-        <a href="pieczywa.html">Pieczywa</a>
-        <a href="piosenki.html">Piosenki</a>
-    </nav>
-
-    <section style="width: 60%; float: left;">
-        <article>
+    <section>
+        <article class="article-element">
             <p>Przykładowe gry</p>
             <ul>
                 <li>Persona 3 Portable</li>
@@ -29,7 +30,7 @@
             </ul>
         </article>
 
-        <article>
+        <article class="article-element">
             <p>Przykładowe gry z linkami</p>
             <ol>
                 <li><a href="https://steamdb.info/app/10/">Counter Strike</a></li>
@@ -39,7 +40,7 @@
             </ol>
         </article>
 
-        <article>
+        <article class="article-element">
             <p>Moja edukacja</p>
             <table border="1">
                 <tr>
@@ -61,7 +62,7 @@
             </table>
         </article>
 
-        <article>
+        <article class="article-element">
             <p>Pusta tabelka</p>
             <table border="1" width="100" height="100">
                 <tr>
@@ -88,7 +89,7 @@
         </article>
     </section>
 
-    <aside style="width: 40%; float: left;">
+    <aside>
         <form action="" method="get">
             <label for="in-number">Podaj liczbę</label>
             <input type="number" name="in-number" id="in-number" min="0" max="10" value="5"><br>
@@ -106,7 +107,7 @@
         </form>
     </aside>
 
-    <footer style="clear: both;">
+    <footer>
         <img src="chleb.jpg" alt="Chleb" width="250">
     </footer>
 </body>
