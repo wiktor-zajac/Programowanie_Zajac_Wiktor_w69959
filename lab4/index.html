@@ -16,14 +16,14 @@
     </div>
 
     <div class="js-4-container">
-        <button class="js-4-btn js-4-btn-red"></button>
-        <button class="js-4-btn js-4-btn-blue"></button>
-        <button class="js-4-btn js-4-btn-rainbow"></button>
+        <button class="js-4-btn js-4-btn-red">Czerowny</button>
+        <button class="js-4-btn js-4-btn-blue">Niebieski</button>
+        <button class="js-4-btn js-4-btn-rainbow">Tęczowy</button>
     </div>
 
     <div>
         <input type="button" value="Pokaż!" class="js-5-btn">
-        <img class="js-5-img" src="baguet.webp" alt="Bagietka">
+        <img class="js-5-img hide" src="baguet.webp" alt="Bagietka">
     </div>
 
     <div>
@@ -31,6 +31,59 @@
         <input type="button" value="Dodaj do listy" id="js-6-btn">
         <ul id="js-6-list"></ul>
     </div>
-</body>
+    <style>
+        .hide {
+            display: none;
+        }
 
+        .js-5-img {
+            width: 500px;
+        }
+
+        .js-4-btn-red.js-4-anim-start {
+            background-color: #f00;
+        }
+
+        .js-4-btn-blue.js-4-anim-start {
+            background-color: #00f;
+            color: #fff;
+        }
+
+        .js-4-btn-rainbow.js-4-anim-start {
+            background-color: #fff; /* dummy value to make animation work */
+            animation: rainbow 5s linear 0s infinite normal none;
+        }
+
+        @keyframes rainbow {
+            0% {
+                background-color: #f00;
+                color: #fff;
+            }
+            14.3% {
+                background-color: #ff0;
+                color: #000;
+            }
+            28.6% {
+                background-color: #0f0;
+                color: #000;
+            }
+            42.9% {
+                background-color: #0ff;
+                color: #000;
+            }
+            57.2% {
+                background-color: #00f;
+                color: #fff;
+            }
+            71.5% {
+                background-color: #f0f;
+                color: #fff;
+            }
+            100% {
+                background-color: #f00;
+                color: #fff;
+            }
+        }
+    </style>
+</body>
 </html>
