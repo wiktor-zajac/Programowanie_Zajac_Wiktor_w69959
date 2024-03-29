@@ -1,6 +1,6 @@
-const $ = (q) => document.querySelector(q);
-const $all = (q) => document.querySelectorAll(q);
-const sleep = async ms => new Promise(r => setTimeout(r, ms));
+const $ = (q, c=document) => c.querySelector(q);
+const $all = (q, c=document) => c.querySelectorAll(q);
+const sleep = async (ms) => new Promise(r => setTimeout(r, ms));
 
 // Zadanie 1
 const countDownForNode = $('#js-1-for');
@@ -23,8 +23,9 @@ const zad1_while = async () => {
     countDownWhileNode.innerHTML += `Szczęśliwego nowego roku!`;
 }
 
-zad1_for();
-zad1_while();
+// TODO: uncomment later
+// zad1_for();
+// zad1_while();
 
 // Zadanie 2
 const silnia = (n) => !(n > 1) ? 1 : silnia(n - 1) * n;
@@ -67,4 +68,48 @@ addToListBtn.addEventListener('click', () => {
 
 
 // Zadanie 7
+const
+    tableBody = $('#js-7-tbody'),
+    firstNameInput = $('#js-7-fname'),
+    lastNameInput = $('#js-7-lname'),
+    tableInsertBtn = $('#js-7-btn');
 
+tableInsertBtn.addEventListener('click', () => {
+    let row = tableBody.insertRow();
+
+    let cell = row.insertCell();
+    cell.innerHTML = firstNameInput.value;
+
+    cell = row.insertCell();
+    cell.innerHTML = lastNameInput.value;
+
+    firstNameInput.value = '';
+    lastNameInput.value = '';
+});
+
+// Zadanie 8
+const unitConvInputNode = $('#js-8-in-value');
+const unitConvInputRadios = $all('.js-8-radio');
+
+unitConvInputNode.addEventListener('input', () => convert());
+unitConvInputRadios.forEach((v) => v.addEventListener('change', () => convert()));
+
+const convert = () => {
+    const
+        inUnit = $('input[type=radio][name=js-8-in-unit]:checked').value,
+        outUnit = $('input[type=radio][name=js-8-out-unit]:checked').value,
+        outValueNode = $('#js-8-out-value');
+    let inValue = Number(unitConvInputNode.value);
+
+    if (inUnit == 'K')
+        inValue -= 273.15;
+    else if (inUnit == 'F')
+        inValue = (inValue - 32) / 1.8;
+
+    if (outUnit == 'K')
+        inValue += 273.15;
+    else if (outUnit == 'F')
+        inValue = inValue * 1.8 + 32;
+
+    outValueNode.value = Math.round((inValue + Number.EPSILON) * 100) / 100;
+};
