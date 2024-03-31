@@ -23,9 +23,9 @@ const zad1_while = async () => {
     countDownWhileNode.innerHTML += `Szczęśliwego nowego roku!`;
 }
 
-// TODO: uncomment later
-// zad1_for();
-// zad1_while();
+zad1_for();
+zad1_while();
+
 
 // Zadanie 2
 const silnia = (n) => !(n > 1) ? 1 : silnia(n - 1) * n;
@@ -87,6 +87,7 @@ tableInsertBtn.addEventListener('click', () => {
     lastNameInput.value = '';
 });
 
+
 // Zadanie 8
 const unitConvInputNode = $('#js-8-in-value');
 const unitConvInputRadios = $all('.js-8-radio');
@@ -113,3 +114,58 @@ const convert = () => {
 
     outValueNode.value = Math.round((inValue + Number.EPSILON) * 100) / 100;
 };
+
+
+// Zadanie 9
+// https://stackoverflow.com/a/17445304
+const gcd = (a, b) => {
+    if (!b) return a;
+    return gcd(b, a % b);
+};
+
+const
+    GCDfirstNumberNode = $('#js-9-num1'),
+    GCDsecondNumberNode = $('#js-9-num2'),
+    GCDbutton = $('#js-9-btn'),
+    GCDparagraph = $('#js-9-p');
+
+GCDbutton.addEventListener('click', () => {
+    let
+        x = GCDfirstNumberNode.value,
+        y = GCDsecondNumberNode.value;
+    GCDparagraph.innerHTML = `NWD(${x}, ${y})=${gcd(x, y)}`;
+})
+
+
+// Zadanie 10
+const
+    clacUpperScreen = $('#js-10-upper'),
+    calcLowerScreen = $('#js-10-lower'),
+    calcOps = $all('.js-10-ops');
+
+calcOps.forEach((v) => {
+    v.addEventListener('click', () => {
+        let
+            x = Number(clacUpperScreen.value),
+            y = Number(calcLowerScreen.value),
+            o = v.value;
+
+        switch (o) {
+            case '+':
+                x += y;
+                break;
+            case '-':
+                x -= y;
+                break;
+            case '*':
+                x *= y;
+                break;
+            case '/':
+                x /= y;
+                break;
+        }
+
+        clacUpperScreen.value = x;
+        calcLowerScreen.value = 0;
+    })
+})
