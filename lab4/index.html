@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script defer src="script.js"></script>
+
+    <div>
+        <div id="js-1-for"></div>
+        <div id="js-1-while"></div>
+    </div>
+
+    <div class="js-4-container">
+        <button class="js-4-btn js-4-btn-red">Czerowny</button>
+        <button class="js-4-btn js-4-btn-blue">Niebieski</button>
+        <button class="js-4-btn js-4-btn-rainbow">Tęczowy</button>
+    </div>
+
+    <div>
+        <input type="button" value="Pokaż!" class="js-5-btn">
+        <img class="js-5-img hide" src="baguet.webp" alt="Bagietka">
+    </div>
+
+    <div>
+        <input type="text" name="js-6-txt" id="js-6-txt">
+        <input type="button" value="Dodaj do listy" id="js-6-btn">
+        <ul id="js-6-list"></ul>
+    </div>
+
+    <div>
+        <label for="js-7-fname">Imię:</label>
+        <input type="text" id="js-7-fname" name="js-7-fname"><br>
+        <label for="js-7-lname">Nazwisko:</label>
+        <input type="text" id="js-7-lname" name="js-7-lname"><br>
+        <input type="button" value="Dodaj" id="js-7-btn">
+        <table id="js-7-table">
+            <thead>
+                <th>Imię</th>
+                <th>Nazwisko</th>
+            </thead>
+            <tbody id="js-7-tbody"></tbody>
+        </table>
+    </div>
+
+    <div>
+        <label for="js-8-in-value">Stopnie</label>
+        <input type="number" name="js-8-in-value" id="js-8-in-value" value="0" required><br>
+
+        <input class="js-8-radio" type="radio" name="js-8-in-unit" id="js-8-in-unit-c" value="C" checked>
+        <label for="js-8-in-unit-c">Celcjusza</label>
+        <input class="js-8-radio" type="radio" name="js-8-in-unit" id="js-8-in-unit-f" value="F">
+        <label for="js-8-in-unit-f">Farenheita</label>
+        <input class="js-8-radio" type="radio" name="js-8-in-unit" id="js-8-in-unit-k" value="K">
+        <label for="js-8-in-unit-k">Kelwina</label><br>
+
+        <input class="js-8-radio" type="radio" name="js-8-out-unit" id="js-8-out-unit-c" value="C">
+        <label for="js-8-out-unit-c">Celcjusza</label>
+        <input class="js-8-radio" type="radio" name="js-8-out-unit" id="js-8-out-unit-f" value="F" checked>
+        <label for="js-8-out-unit-f">Farenheita</label>
+        <input class="js-8-radio" type="radio" name="js-8-out-unit" id="js-8-out-unit-k" value="K">
+        <label for="js-8-out-unit-k">Kelwina</label><br>
+
+        <label for="js-8-out-value">Wynik</label>
+        <input type="number" name="js-8-out-value" id="js-8-out-value" value="0" disabled>
+    </div>
+
+    <div>
+        <h3>Największy wspólny Dzielnik</h3>
+        <input type="number" name="js-9-num1" id="js-9-num1"><br>
+        <input type="number" name="js-9-num2" id="js-9-num2"><br>
+        <input type="button" value="Oblicz" id="js-9-btn"><br>
+        <p id="js-9-p"></p>
+    </div>
+
+    <div>
+        <input type="number" name="js-10-upper" id="js-10-upper" value="0"><br>
+        <input type="number" name="js-10-lower" id="js-10-lower" value="0"><br>
+        <input type="button" value="+" class="js-10-ops">
+        <input type="button" value="-" class="js-10-ops">
+        <input type="button" value="*" class="js-10-ops">
+        <input type="button" value="/" class="js-10-ops">
+    </div>
+
+    <style>
+        .hide {
+            display: none;
+        }
+
+        .js-5-img {
+            width: 500px;
+        }
+
+        .js-4-btn-red.js-4-anim-start {
+            background-color: #f00;
+        }
+
+        .js-4-btn-blue.js-4-anim-start {
+            background-color: #00f;
+            color: #fff;
+        }
+
+        .js-4-btn-rainbow.js-4-anim-start {
+            background-color: #fff;
+            /* dummy value to make animation work */
+            animation: rainbow 5s linear 0s infinite normal none;
+        }
+
+        @keyframes rainbow {
+            0% {
+                background-color: #f00;
+                color: #fff;
+            }
+
+            14.3% {
+                background-color: #ff0;
+                color: #000;
+            }
+
+            28.6% {
+                background-color: #0f0;
+                color: #000;
+            }
+
+            42.9% {
+                background-color: #0ff;
+                color: #000;
+            }
+
+            57.2% {
+                background-color: #00f;
+                color: #fff;
+            }
+
+            71.5% {
+                background-color: #f0f;
+                color: #fff;
+            }
+
+            100% {
+                background-color: #f00;
+                color: #fff;
+            }
+        }
+    </style>
+</body>
+
+</html>
