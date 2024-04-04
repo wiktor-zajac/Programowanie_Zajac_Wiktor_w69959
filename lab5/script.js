@@ -122,7 +122,30 @@ console.log(randomPassword());
 
 
 // Zadanie 12
-
+const tableNode = $('#js-12');
+for(let x = 1; x <= 10; x++) {
+    let row = tableNode.insertRow();
+    for(let y = 1; y <= 10; y++) {
+        row.insertCell().innerHTML = x*y;
+    }
+}
 
 
 // Zadanie 13
+const randomNumber = (min, max) => Math.floor(Math.random() * (max - min) + min);
+const firstNames = ['Jan', 'Jakub', 'Sebastian', 'Wiktor', 'Piotr', 'Natalia', 'Anna', 'Ewa', 'Małgorzata'];
+const lastNames = ['Nowak', 'Kowalski', 'Zając', 'Królik', 'Dąb', 'Świerk', 'Brzoza', 'Bąk', 'Mucha'];
+const people = [];
+
+for (let i = 0; i <= 20; i++) {
+    const person = {
+        firstName: randomFromArray(firstNames),
+        lastName: randomFromArray(lastNames),
+        age: randomNumber(18, 80),
+        phoneNumber: randomNumber(5_000_000, 8_000_000),
+    }
+}
+
+const
+    previewNum = $('#js-13-num'),
+    previewBtn = $('')
