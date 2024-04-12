@@ -1,28 +1,101 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Labolatorium 5</title>
 </head>
+
 <body>
-    <div id="js-3"></div>
-    <div id="js-4"></div>
     <script defer src="script.js"></script>
-    <table id="js-12" border="1"></table>
-    <div>
-        <input type="number" name="js-13-num" id="js-13-num" min="1" max="20" step="1">
+
+    <div id="js-1">
+        <h3>Zadanie 1</h3>
+        <p>Podane liczby: <i id="js-1-nums"></i></p>
+        <p id="js-1-answer">&nbsp;</p>
+    </div>
+
+    <div id="js-2">
+        <h3>Zadanie 2</h3>
+        <p>Podana wartość: <i id="js-2-user-input"></i></p>
+        <p>Aktualny stan: <i id="js-2-state"></i></p>
+    </div>
+
+    <div id="js-3">
+        <h3>Zadanie 3</h3>
+        <p>Przed: <i id="js-3-before"></i></p>
+        <p>Po: <i id="js-3-after"></i></p>
+    </div>
+
+    <div id="js-4">
+        <h3>Zadanie 4</h3>
+        <p>Wylosowane liczby: <i id="js-4-answer"></i></p>
+    </div>
+
+    <div id="js-5">
+        <h3>Zadanie 5</h3>
+        <p>Suma wszystkich wartośći: <i id="js-5-sum"></i></p>
+        <p>Znalezione indeksy parzystych wartości: <i id="js-5-foundIndexesOfEvenNumbers"></i></p>
+        <p>Wszystkie liczby przemnożone przez trzy: <i id="js-5-multipliedByThree"></i></p>
+        <p>Indeks dodanej nowej wartości: <i id="js-5-indexOfAddedValue"></i></p>
+        <p>Średnia arytmetyczna wszystkich wartośći: <i id="js-5-average"></i></p>
+        <p>Największa wartość: <i id="js-5-max"></i></p>
+        <p>Wystąpienia liczby <i id="js-5-seeked-value"></i>: <i id="js-5-occurencesOfRandomValue"></i></p>
+    </div>
+
+    <div id="js-6">
+        <h3>Zadanie 6</h3>
+        <p>Pierwsze sto wyrazów ciągu Fibonacciego: <i id="js-6-answer"></i></p>
+    </div>
+
+    <div id="js-7">
+        <h3>Zadanie 7</h3>
+        <p>Suma dwóch największych wyrazów: <i id="js-7-answer"></i></p>
+    </div>
+
+    <div id="js-8">
+        <h3>Zadanie 8</h3>
+        <p>Tablica bez duplikatów: <i id="js-8-answer"></i></p>
+    </div>
+
+    <div id="js-9">
+        <h3>Zadanie 9</h3>
+        <input type="number" name="js-9-num" id="js-9-num" min="0" step="1" value="69959">
+        <p>Jest liczbą pierwszą? <i id="js-9-answer"></i></p>
+    </div>
+
+    <div id="js-10">
+        <h3>Zadanie 10</h3>
+        <input type="text" id="js-10-input" value="Ala ma kota a kot ma Alę">
+        <input type="text" id="js-10-output">
+    </div>
+
+    <div id="js-11">
+        <h3>Zadanie 11</h3>
+        <input type="text" id="js-11-output" disabled>
+        <input type="button" id="js-11-btn" value="Wygeneruj nowe hasło">
+    </div>
+
+    <div id="js-12">
+        <h3>Zadanie 12</h3>
+        <table id="js-12-table" border="1"></table>
+    </div>
+
+    <div id="js-13">
+        <h3>Zadanie 13</h3>
+        <input type="number" name="js-13-num" id="js-13-num" min="1" max="20" value="5" step="1">
         <input type="button" value="Pokaż" id="js-13-btn">
-        <table id="js-13-table">
+        <table id="js-13-table" border="1">
             <thead>
-                <th>lp.</th>
                 <th>Imię</th>
                 <th>Nazwisko</th>
                 <th>Wiek</th>
-                <th>nr. tel.</th>
+                <th>Nr. tel.</th>
             </thead>
             <tbody id="js-13-tbody"></tbody>
         </table>
     </div>
 </body>
+
 </html>
