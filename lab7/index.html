@@ -13,7 +13,7 @@
 
     <div id="app">
         <section class="form-container">
-            <form action="" class="form">
+            <form novalidate action="" class="form">
                 <div class="form__side-left">
                     <h3 class="form-side__header">Dane osobiste</h3>
 
@@ -35,13 +35,13 @@
                     <div class="form-input">
                         <label class="form-input__label" for="form-input-password">Hasło</label>
                         <input type="password" class="form-input__input" id="form-input-password" required
-                            minlength="8">
+                            autocomplete="new-password">
                     </div>
 
                     <div class="form-input">
                         <label class="form-input__label" for="form-input-password-repeat">Powtórz hasło</label>
                         <input type="password" class="form-input__input" id="form-input-password-repeat" required
-                            minlength="8">
+                            minlength="8" autocomplete="off">
                     </div>
 
                     <div class="form-input">
@@ -73,26 +73,49 @@
 
                     <div class="form-input">
                         <label class="form-input__label" for="form-input-voivodeship">Województwo</label>
-                        <input type="text" class="form-input__input" id="form-input-voivodeship" required>
+                        <input type="text" class="form-input__input" id="form-input-voivodeship" required disabled>
+                    </div>
+
+                    <div class="form-input hidden">
+                        <label class="form-input__label" for="form-input-voivodeship-select">Województwo</label>
+                        <select id="form-input-voivodeship-select" disabled>
+                            <option value="ds">dolnośląskie</option>
+                            <option value="kp">kujawsko-pomorskie</option>
+                            <option value="lu">lubelskie</option>
+                            <option value="lb">lubuskie</option>
+                            <option value="ld">łódzkie</option>
+                            <option value="ma">małopolskie</option>
+                            <option value="mz">mazowieckie</option>
+                            <option value="op">opolskie</option>
+                            <option value="pk">podkarpackie</option>
+                            <option value="pd">podlaskie</option>
+                            <option value="pm">pomorskie</option>
+                            <option value="sl">śląskie</option>
+                            <option value="sk">świętokrzyskie</option>
+                            <option value="wn">warmińsko-mazurskie</option>
+                            <option value="wp">wielkopolskie</option>
+                            <option value="zp">zachodniopomorskie</option>
+                        </select>
                     </div>
 
                     <div class="form-input">
                         <label class="form-input__label" for="form-input-address">Adres zamieszkania</label>
-                        <input type="text" class="form-input__input" id="form-input-address" required>
+                        <input type="text" class="form-input__input" id="form-input-address" required disabled>
                     </div>
 
                     <div class="form-input form-input--full-line">
                         <input type="checkbox" class="form-input__input full-line" id="form-input-correspondence-check"
                             checked>
-                        <label class="form-input__label full-line">
+                        <label class="form-input__label full-line" for="form-input-correspondence-check">
                             Adres korespondencyjny jest taki sam jak adres zamieszkania
                         </label>
                     </div>
 
-                    <div class="form-input">
+                    <div class="form-input hidden" id="form-input-correspondence-address-container">
                         <label class="form-input__label" for="form-input-correspondence-address">Adres
                             korespondencyjny</label>
-                        <input type="text" class="form-input__input" id="form-input-correspondence-address" required>
+                        <input type="text" class="form-input__input" id="form-input-correspondence-address" required
+                            disabled>
                     </div>
 
                     <div class="form-input form-input--full-line">

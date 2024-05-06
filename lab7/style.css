@@ -56,6 +56,10 @@ html, body {
     width: 60%;
 }
 
+.form-input__input:invalid {
+    background-color: #faa;
+}
+
 .form-input--full-line>.form-input__input:not([type="checkbox"]),
 .form-input--full-line>.form-input__label {
     width: 100%;
@@ -63,4 +67,8 @@ html, body {
 
 .form-input__input--submit {
     font-size: 120%;
+}
+
+.hidden {
+    display: none;
 }
