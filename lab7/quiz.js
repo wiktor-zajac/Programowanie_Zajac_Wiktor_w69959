@@ -22,8 +22,8 @@ class QuizQuestion {
     question = '';
     answer = '';
 
-    constructor(question, answer) {
-        this.question = question;
+    constructor(q, answer) {
+        this.question = q;
         this.answer = answer;
     }
 }
@@ -36,8 +36,8 @@ class QuizQuestionList {
     }
 
     addQuestion(question, answer) {
-        const question = new QuizQuestion(question, answer);
-        this.addQuestion(question);
+        const q = new QuizQuestion(question, answer);
+        this.addQuestion(q);
     }
 
     addQuestion(questionObj) {
