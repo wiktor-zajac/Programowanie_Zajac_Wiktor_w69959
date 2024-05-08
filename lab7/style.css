@@ -1,0 +1,94 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    font-family: sans-serif;
+    font-size: 1.05em;
+    color: #fff;
+    background-color: #222;
+}
+
+#app {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    width: 90vw;
+}
+
+.form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.form__side-left, .form__side-right {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+}
+
+.form-side__header {
+    padding-bottom: 15px;
+}
+
+.form-input {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: 5px;
+    margin: 3px;
+}
+
+.form-input__label {
+    width: 40%;
+    padding: 0 5px;
+}
+
+.form-input__input:not([type="checkbox"]) {
+    width: 60%;
+    border-radius: 5px;
+}
+
+.form-input__input:invalid:not([type="submit"]) {
+    background-color: #fbb;
+    border: 2px solid #a22;
+}
+
+.form-input__input:valid:not([type="submit"]) {
+    background-color: #bfb;
+    border: 2px solid #2a2;
+}
+
+.form-input__input:disabled:not([type="submit"]) {
+    background-color: #bbb;
+    border: 2px solid #222;
+    border-radius: 5px;
+}
+
+.form-input--full-line>.form-input__input:not([type="checkbox"]),
+.form-input--full-line>.form-input__label {
+    width: 100%;
+}
+
+.form-input__input--submit {
+    font-size: 120%;
+}
+
+.hidden {
+    display: none;
+}
+
+
+
+#quiz-list-tbody td,
+#contact-list-tbody td {
+    text-align: center;
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Labolatorium 7 - Walidacja - quiz</title>
+    <link async rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <script defer src="script.js"></script>
+    <script defer src="quiz.js"></script>
+
+    <div id="app">
+        <section class="form-container">
+            <form novalidate action="" class="form">
+                <div class="form__side-left">
+                    <h3 class="form-side__header">QUIZ</h3>
+
+                    <div class="form-input">
+                        <label class="form-input__label" for="form-input-question">Pytanie</label>
+                        <input type="text" class="form-input__input" id="form-input-question" required minlength="2">
+                    </div>
+
+                    <div class="form-input">
+                        <label class="form-input__label" for="form-input-answer">Odpowiedź</label>
+                        <input type="text" class="form-input__input" id="form-input-answer" required minlength="2">
+                    </div>
+
+                    <div class="form-input form-input--full-line">
+                        <input type="submit" class="form-input__input form-input__input--submit"
+                            value="Dodaj pytanie do quizu">
+                    </div>
+                </div>
+            </form>
+        </section>
+
+        <table>
+            <thead>
+                <th>Pytanie</th>
+                <th>Odpowiedź</th>
+            </thead>
+            <tbody id="quiz-list-tbody"></tbody>
+        </table>
+    </div>
+</body>
+
+</html>

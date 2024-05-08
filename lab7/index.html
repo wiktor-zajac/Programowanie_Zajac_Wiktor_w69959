@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Labolatorium 7 - Walidacja</title>
+    <link async rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <script defer src="script.js"></script>
+    <script defer src="index.js"></script>
+
+    <div id="app">
+        <section class="form-container">
+            <form novalidate action="" class="form">
+                <div class="form__side-left">
+                    <h3 class="form-side__header">Dane osobiste</h3>
+
+                    <div class="form-input">
+                        <label class="form-input__label" for="form-input-first-name">Imię</label>
+                        <input type="text" class="form-input__input" id="form-input-first-name" required minlength="2">
+                    </div>
+
+                    <div class="form-input">
+                        <label class="form-input__label" for="form-input-last-name">Nazwisko</label>
+                        <input type="text" class="form-input__input" id="form-input-last-name" required minlength="2">
+                    </div>
+
+                    <div class="form-input">
+                        <label class="form-input__label" for="form-input-email">Email</label>
+                        <input type="email" class="form-input__input" id="form-input-email" required>
+                    </div>
+
+                    <div class="form-input">
+                        <label class="form-input__label" for="form-input-password">Hasło</label>
+                        <input type="password" class="form-input__input" id="form-input-password" required
+                            autocomplete="new-password">
+                    </div>
+
+                    <div class="form-input">
+                        <label class="form-input__label" for="form-input-password-repeat">Powtórz hasło</label>
+                        <input type="password" class="form-input__input" id="form-input-password-repeat" required
+                            autocomplete="off">
+                    </div>
+
+                    <div class="form-input">
+                        <label class="form-input__label" for="form-input-gender">Płeć</label>
+                        <select class="form-input__input" id="form-input-gender" required>
+                            <option value="f">Kobieta</option>
+                            <option value="m">Mężczyzna</option>
+                            <option value="n">Nie chcę odpowiadać</option>
+                        </select>
+                    </div>
+
+                    <div class="form-input">
+                        <label class="form-input__label" for="form-input-phone">Telefon</label>
+                        <input type="text" class="form-input__input" id="form-input-phone" required>
+                    </div>
+
+                    <div class="form-input">
+                        <label class="form-input__label" for="form-input-dob">Data Urodzenia</label>
+                        <input type="date" class="form-input__input" id="form-input-dob" required>
+                    </div>
+                </div>
+                <div class="form__side-right">
+                    <h3 class="form-side__header">Adres</h3>
+
+                    <div class="form-input">
+                        <label class="form-input__label" for="form-input-country">Kraj</label>
+                        <input type="text" class="form-input__input" id="form-input-country" required>
+                    </div>
+
+                    <div class="form-input" id="form-input-voivodeship-text-container">
+                        <label class="form-input__label" for="form-input-voivodeship-text">Województwo</label>
+                        <input type="text" class="form-input__input" id="form-input-voivodeship-text" required disabled>
+                    </div>
+
+                    <div class="form-input hidden" id="form-input-voivodeship-select-container">
+                        <label class="form-input__label" for="form-input-voivodeship-select">Województwo</label>
+                        <select class="form-input__input" id="form-input-voivodeship-select" disabled>
+                            <option value="ds">dolnośląskie</option>
+                            <option value="kp">kujawsko-pomorskie</option>
+                            <option value="lu">lubelskie</option>
+                            <option value="lb">lubuskie</option>
+                            <option value="ld">łódzkie</option>
+                            <option value="ma">małopolskie</option>
+                            <option value="mz">mazowieckie</option>
+                            <option value="op">opolskie</option>
+                            <option value="pk">podkarpackie</option>
+                            <option value="pd">podlaskie</option>
+                            <option value="pm">pomorskie</option>
+                            <option value="sl">śląskie</option>
+                            <option value="sk">świętokrzyskie</option>
+                            <option value="wn">warmińsko-mazurskie</option>
+                            <option value="wp">wielkopolskie</option>
+                            <option value="zp">zachodniopomorskie</option>
+                        </select>
+                    </div>
+
+                    <div class="form-input">
+                        <label class="form-input__label" for="form-input-address">Adres zamieszkania</label>
+                        <input type="text" class="form-input__input" id="form-input-address" required disabled>
+                    </div>
+
+                    <div class="form-input form-input--full-line">
+                        <input type="checkbox" class="form-input__input full-line" id="form-input-correspondence-check"
+                            checked>
+                        <label class="form-input__label full-line" for="form-input-correspondence-check">
+                            Adres korespondencyjny jest taki sam jak adres zamieszkania
+                        </label>
+                    </div>
+
+                    <div class="form-input hidden" id="form-input-correspondence-address-container">
+                        <label class="form-input__label" for="form-input-correspondence-address">Adres
+                            korespondencyjny</label>
+                        <input type="text" class="form-input__input" id="form-input-correspondence-address" required
+                            disabled>
+                    </div>
+
+                    <div class="form-input form-input--full-line">
+                        <input type="submit" class="form-input__input form-input__input--submit"
+                            value="Zarejestruj się!">
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Labolatorium 7 - Walidacja - kontakty</title>
+    <link async rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <script defer src="script.js"></script>
+    <script defer src="kontakt.js"></script>
+
+    <div id="app">
+        <section class="form-container">
+            <form novalidate action="" class="form">
+                <div class="form__side-left">
+                    <h3 class="form-side__header">Lista kontaktów</h3>
+
+                    <div class="form-input">
+                        <label class="form-input__label" for="form-input-first-name">Imię</label>
+                        <input type="text" class="form-input__input" id="form-input-first-name" required minlength="2">
+                    </div>
+
+                    <div class="form-input">
+                        <label class="form-input__label" for="form-input-last-name">Nazwisko</label>
+                        <input type="text" class="form-input__input" id="form-input-last-name" required minlength="2">
+                    </div>
+
+                    <div class="form-input">
+                        <label class="form-input__label" for="form-input-phone">Telefon</label>
+                        <input type="phone" class="form-input__input" id="form-input-phone" required pattern="[0-9]{9}">
+                    </div>
+
+                    <div class="form-input form-input--full-line">
+                        <input type="submit" class="form-input__input form-input__input--submit" value="Zapisz kontakt">
+                    </div>
+                </div>
+            </form>
+        </section>
+
+        <table>
+            <thead>
+                <th>Imię</th>
+                <th>Nazwisko</th>
+                <th>Nr. tel.</th>
+            </thead>
+            <tbody id="contact-list-tbody"></tbody>
+        </table>
+    </div>
+</body>
+
+</html>
