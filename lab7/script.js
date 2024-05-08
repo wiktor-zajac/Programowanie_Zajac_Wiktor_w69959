@@ -50,6 +50,10 @@ class ValidationHelper {
         const validAgeTimeSpanMs = 18 * 365.242199 * 24 * 60 * 60 * 1000;
         return input.valueAsNumber < Date.now() + validAgeTimeSpanMs;
     }
+
+    static checkPhoneNumber(input) {
+        // TODO
+    }
 }
 
 class ValidationCustomMessages {
@@ -116,11 +120,15 @@ class ValidationCustomMessages {
             input.setCustomValidity('');
         return isValid;
     }
+
+    static checkPhoneNumber(input) {
+        // TODO
+    }
 }
 
 class Validator {
     static validate(input) {
-        if (input.id == 'form-input-correspondence-address' && formInputsCorrespondenceCheck.checked) {
+        if (input.disabled) {
             input.setCustomValidity('');
             return true;
         }
@@ -150,19 +158,32 @@ class Validator {
     }
 }
 
-const updateDisabledStatus = () => {
-    formInputsVoivodeship.disabled = formInputsCountry.value.length == 0;
-    formInputsAddress.disabled = formInputsVoivodeship.disabled || formInputsVoivodeship.value.length == 0;
-    formInputsCorrespondenceAddress.disabled = formInputsCorrespondenceCheck.checked || formInputsVoivodeship.disabled || formInputsVoivodeship.value.length == 0;
+const handleGeoLocationInputs = () => {
+    const
+        shippingToPoland = formInputsCountry.value.toLowerCase() == 'polska' || formInputsCountry.value.toLowerCase() == 'pl',
+        countryFieldEmpty = formInputsCountry.value.length == 0,
+        voivodeshipDisabled = shippingToPoland || countryFieldEmpty,
+        addressDisabled = !(shippingToPoland || formInputsVoivodeship.value.length != 0) || countryFieldEmpty,
+        correspondenceAddressDisabled = addressDisabled || formInputsCorrespondenceCheck.checked;
+
+    formInputsVoivodeship.disabled = voivodeshipDisabled;
+    formInputsVoivodeshipSelect.disabled = !shippingToPoland;
+    formInputsAddress.disabled = addressDisabled;
+    formInputsCorrespondenceAddress.disabled = correspondenceAddressDisabled;
+
     formInputsCorrespondenceAddressContainer.classList.toggle('hidden', formInputsCorrespondenceCheck.checked);
+
+    formInputsVoivodeshipContainer.classList.toggle('hidden', shippingToPoland);
+    formInputsVoivodeshipSelectContainer.classList.toggle('hidden', !shippingToPoland);
 }
 
-const
-    form = $('.form'),
+const form = $('.form'),
     formInputPassword = $fi('password'),
     formInputsCountry = $fi('country'),
     formInputsVoivodeship = $fi('voivodeship'),
+    formInputsVoivodeshipContainer = $fi('voivodeship-container'),
     formInputsVoivodeshipSelect = $fi('voivodeship-select'),
+    formInputsVoivodeshipSelectContainer = $fi('voivodeship-select-container'),
     formInputsAddress = $fi('address'),
     formInputsCorrespondenceCheck = $fi('correspondence-check'),
     formInputsCorrespondenceAddress = $fi('correspondence-address'),
@@ -172,14 +193,14 @@ const formInputs = [
     formInputsCorrespondenceAddress,
     formInputsCorrespondenceCheck,
     formInputsAddress,
-    // // formInputsVoivodeshipSelect,
+    formInputsVoivodeshipSelect,
     formInputsVoivodeship,
     formInputsCountry,
     $fi('dob'),
     $fi('phone'),
     $fi('gender'),
-    // $fi('password-repeat'),
-    // formInputPassword,
+    $fi('password-repeat'),
+    formInputPassword,
     $fi('email'),
     $fi('last-name'),
     $fi('first-name'),
@@ -197,10 +218,10 @@ form.addEventListener('submit', (e) => {
     if (reports.every(x => x == true)) {
         alert('Wysłano formularz!');
         form.reset();
-        updateDisabledStatus();
+        handleGeoLocationInputs();
     }
 });
 
-formInputsCountry.addEventListener('input', () => updateDisabledStatus());
-formInputsVoivodeship.addEventListener('input', () => updateDisabledStatus());
-formInputsCorrespondenceCheck.addEventListener('input', () => updateDisabledStatus());
+formInputsCountry.addEventListener('input', () => handleGeoLocationInputs());
+formInputsVoivodeship.addEventListener('input', () => handleGeoLocationInputs());
+formInputsCorrespondenceCheck.addEventListener('input', () => handleGeoLocationInputs());
