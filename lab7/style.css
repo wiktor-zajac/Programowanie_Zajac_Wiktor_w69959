@@ -54,10 +54,23 @@ html, body {
 
 .form-input__input:not([type="checkbox"]) {
     width: 60%;
+    border-radius: 5px;
 }
 
-.form-input__input:invalid {
-    background-color: #faa;
+.form-input__input:invalid:not([type="submit"]) {
+    background-color: #fbb;
+    border: 2px solid #a22;
+}
+
+.form-input__input:valid:not([type="submit"]) {
+    background-color: #bfb;
+    border: 2px solid #2a2;
+}
+
+.form-input__input:disabled:not([type="submit"]) {
+    background-color: #bbb;
+    border: 2px solid #222;
+    border-radius: 5px;
 }
 
 .form-input--full-line>.form-input__input:not([type="checkbox"]),

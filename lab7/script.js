@@ -52,77 +52,48 @@ class ValidationHelper {
     }
 
     static checkPhoneNumber(input) {
-        // TODO
+        return /[0-9]{9}/.test(input.value);
     }
 }
 
 class ValidationCustomMessages {
-    static checkRequired(input) {
-        const isValid = ValidationHelper.checkRequired(input);
-        if (!isValid)
-            input.setCustomValidity('To pole jest wymagane');
-        else
-            input.setCustomValidity('');
+    static #framework(messageInvalid, checkFn, input, arg = undefined) {
+        const isValid = checkFn(input, arg);
+        input.setCustomValidity(!isValid ? messageInvalid : '');
         return isValid;
+    }
+
+    static checkRequired(input) {
+        return this.#framework('To pole jest wymagane', ValidationHelper.checkRequired, input);
     }
 
     static checkLengthMin(input, min) {
-        const isValid = ValidationHelper.checkLengthMin(input, min);
-        if (!isValid)
-            input.setCustomValidity('Podana wartość jest zbyt krótka');
-        else
-            input.setCustomValidity('');
-        return isValid;
+        return this.#framework('Podana wartość jest zbyt krótka', ValidationHelper.checkLengthMin, input, min);
     }
 
     static checkLengthMax(input, max) {
-        const isValid = ValidationHelper.checkLengthMin(input, max);
-        if (!isValid)
-            input.setCustomValidity('Podana wartość jest zbyt długa');
-        else
-            input.setCustomValidity('');
-        return isValid;
+        return this.#framework('Podana wartość jest zbyt długa', ValidationHelper.checkLengthMax, input, max);
     }
 
     static checkEmail(input) {
-        const isValid = ValidationHelper.checkEmail(input);
-        if (!isValid)
-            input.setCustomValidity('Podany adres email jest niepoprawny');
-        else
-            input.setCustomValidity('');
-        return isValid;
+        return this.#framework('Podany adres email jest niepoprawny', ValidationHelper.checkEmail, input);
     }
 
     static checkPassword(input) {
+        return this.#framework('Podane hasło nie spełnia wymogów bezpieczeństwa', ValidationHelper.checkPassword, input);
         // TODO: split password validation to each part (eg. 1 capital letter and 1 lower letter as separate messages)
-        const isValid = ValidationHelper.checkPassword(input);
-        if (!isValid)
-            input.setCustomValidity('Podane hasło nie spełnia wymogów bezpieczeństwa');
-        else
-            input.setCustomValidity('');
-        return isValid;
     }
 
     static checkPasswordRepeat(inputPass, inputPassRepeat) {
-        const isValid = ValidationHelper.checkPasswordRepeat(inputPass, inputPassRepeat);
-        if (!isValid)
-            inputPassRepeat.setCustomValidity('Podane hasła nie zgadzają się');
-        else
-            inputPassRepeat.setCustomValidity('');
-        return isValid;
+        return this.#framework('Podane hasła nie zgadzają się', ValidationHelper.checkPasswordRepeat, inputPass, inputPassRepeat);
     }
 
     static checkOfAge(input) {
-        const isValid = ValidationHelper.checkOfAge(input);
-        if (!isValid)
-            input.setCustomValidity('Musisz być osobą pełnoletnią aby skorzystać z tej usługi');
-        else
-            input.setCustomValidity('');
-        return isValid;
+        return this.#framework('Musisz być osobą pełnoletnią aby skorzystać z tej usługi', ValidationHelper.checkOfAge, input);
     }
 
     static checkPhoneNumber(input) {
-        // TODO
+        return this.#framework('Podany numer telefonu jest niepoprawny', ValidationHelper.checkPhoneNumber, input);
     }
 }
 
@@ -142,65 +113,61 @@ class Validator {
         if (input.maxLength > 0 && !ValidationCustomMessages.checkLengthMax(input, input.maxLength))
             return false;
 
-        if (input.type == 'email' && !ValidationCustomMessages.checkEmail(input))
-            return false;
+        if (input.type == 'email')
+            return ValidationCustomMessages.checkEmail(input);
 
-        if (input.type == 'password' && input.id != 'form-input-password-repeat' && !ValidationCustomMessages.checkPassword(input))
-            return false;
+        if (input.type == 'password' && input.id != 'form-input-password-repeat')
+            return ValidationCustomMessages.checkPassword(input);
 
-        if (input.id == 'form-input-password-repeat' && !ValidationCustomMessages.checkPasswordRepeat(formInputPassword, input))
-            return false;
+        if (input.id == 'form-input-password-repeat')
+            return ValidationCustomMessages.checkPasswordRepeat(input, fiPassword);
 
-        if (input.id == 'form-input-dob' && !ValidationCustomMessages.checkOfAge(input))
-            return false;
+        if (input.id == 'form-input-dob')
+            return ValidationCustomMessages.checkOfAge(input);
+
+        if (input.id == 'form-input-phone')
+            return ValidationCustomMessages.checkPhoneNumber(input);
 
         return true;
     }
 }
 
-const handleGeoLocationInputs = () => {
+const updateAddressInputs = () => {
     const
-        shippingToPoland = formInputsCountry.value.toLowerCase() == 'polska' || formInputsCountry.value.toLowerCase() == 'pl',
-        countryFieldEmpty = formInputsCountry.value.length == 0,
-        voivodeshipDisabled = shippingToPoland || countryFieldEmpty,
-        addressDisabled = !(shippingToPoland || formInputsVoivodeship.value.length != 0) || countryFieldEmpty,
-        correspondenceAddressDisabled = addressDisabled || formInputsCorrespondenceCheck.checked;
+        countryIsPoland = fiCountry.value.toLowerCase() == 'polska' || fiCountry.value.toLowerCase() == 'pl',
+        countryFieldEmpty = fiCountry.value.length == 0;
+    const
+        voivodeshipTextDisabled = countryIsPoland || countryFieldEmpty,
+        addressDisabled = !countryIsPoland && fiVoivodeshipText.value.length == 0 || countryFieldEmpty,
+        correspondenceAddressDisabled = addressDisabled || fiCorrespondenceCheck.checked;
 
-    formInputsVoivodeship.disabled = voivodeshipDisabled;
-    formInputsVoivodeshipSelect.disabled = !shippingToPoland;
-    formInputsAddress.disabled = addressDisabled;
-    formInputsCorrespondenceAddress.disabled = correspondenceAddressDisabled;
+    fiVoivodeshipText.disabled = voivodeshipTextDisabled;
+    fiVoivodeshipSelect.disabled = !countryIsPoland;
+    fiAddress.disabled = addressDisabled;
+    fiCorrespondenceAddress.disabled = correspondenceAddressDisabled;
 
-    formInputsCorrespondenceAddressContainer.classList.toggle('hidden', formInputsCorrespondenceCheck.checked);
-
-    formInputsVoivodeshipContainer.classList.toggle('hidden', shippingToPoland);
-    formInputsVoivodeshipSelectContainer.classList.toggle('hidden', !shippingToPoland);
+    fiCorrespondenceAddressContainer.classList.toggle('hidden', fiCorrespondenceCheck.checked);
+    fiVoivodeshipTextContainer.classList.toggle('hidden', countryIsPoland);
+    fiVoivodeshipSelectContainer.classList.toggle('hidden', !countryIsPoland);
 }
 
 const form = $('.form'),
-    formInputPassword = $fi('password'),
-    formInputsCountry = $fi('country'),
-    formInputsVoivodeship = $fi('voivodeship'),
-    formInputsVoivodeshipContainer = $fi('voivodeship-container'),
-    formInputsVoivodeshipSelect = $fi('voivodeship-select'),
-    formInputsVoivodeshipSelectContainer = $fi('voivodeship-select-container'),
-    formInputsAddress = $fi('address'),
-    formInputsCorrespondenceCheck = $fi('correspondence-check'),
-    formInputsCorrespondenceAddress = $fi('correspondence-address'),
-    formInputsCorrespondenceAddressContainer = $fi('correspondence-address-container');
+    fiVoivodeshipTextContainer = $fi('voivodeship-text-container'),
+    fiVoivodeshipSelectContainer = $fi('voivodeship-select-container'),
+    fiCorrespondenceAddressContainer = $fi('correspondence-address-container');
 
 const formInputs = [
-    formInputsCorrespondenceAddress,
-    formInputsCorrespondenceCheck,
-    formInputsAddress,
-    formInputsVoivodeshipSelect,
-    formInputsVoivodeship,
-    formInputsCountry,
+    fiCorrespondenceAddress = $fi('correspondence-address'),
+    fiCorrespondenceCheck = $fi('correspondence-check'),
+    fiAddress = $fi('address'),
+    fiVoivodeshipSelect = $fi('voivodeship-select'),
+    fiVoivodeshipText = $fi('voivodeship-text'),
+    fiCountry = $fi('country'),
     $fi('dob'),
-    $fi('phone'),
+    fiPhone = $fi('phone'),
     $fi('gender'),
     $fi('password-repeat'),
-    formInputPassword,
+    fiPassword = $fi('password'),
     $fi('email'),
     $fi('last-name'),
     $fi('first-name'),
@@ -218,10 +185,27 @@ form.addEventListener('submit', (e) => {
     if (reports.every(x => x == true)) {
         alert('Wysłano formularz!');
         form.reset();
-        handleGeoLocationInputs();
+        updateAddressInputs();
     }
 });
 
-formInputsCountry.addEventListener('input', () => handleGeoLocationInputs());
-formInputsVoivodeship.addEventListener('input', () => handleGeoLocationInputs());
-formInputsCorrespondenceCheck.addEventListener('input', () => handleGeoLocationInputs());
+formInputs.forEach((input) => {
+    input.addEventListener('input', () => {
+        Validator.validate(input);
+        input.checkValidity();
+    });
+});
+
+fiCountry.addEventListener('input', () => updateAddressInputs());
+fiVoivodeshipText.addEventListener('input', () => updateAddressInputs());
+fiCorrespondenceCheck.addEventListener('input', () => updateAddressInputs());
+fiPhone.addEventListener('beforeinput', (e) => {
+    if (e.inputType != 'insertFromPaste' &&
+        e.inputType != 'deleteContentForward' &&
+        e.inputType != 'deleteContentBackward' &&
+        (e.inputType != 'insertText' || isNaN(parseInt(e.data)))
+    ) {
+        e.preventDefault();
+        return;
+    }
+});
