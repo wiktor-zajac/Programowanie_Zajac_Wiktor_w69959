@@ -85,3 +85,10 @@ html, body {
 .hidden {
     display: none;
 }
+
+
+
+#quiz-list-tbody td,
+#contact-list-tbody td {
+    text-align: center;
+}
